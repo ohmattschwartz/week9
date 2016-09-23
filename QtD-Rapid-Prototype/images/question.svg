@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 704 114" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.41421;">
+    <g transform="matrix(1,0,0,1,-208.78,-320.685)">
+        <g transform="matrix(1,0,0,1,-94.5535,-9.12915)">
+            <text x="296px" y="411.509px" style="font-family:'AquaGrotesque', 'Aqua Grotesque';font-size:92.835px;fill:rgb(171,105,222);">Today</text>
+            <text x="610.897px" y="411.509px" style="font-family:'LucidaGrande', 'Lucida Grande', sans-serif;font-weight:500;font-size:92.835px;fill:rgb(171,105,222);">&apos;</text>
+            <text x="632.157px" y="411.509px" style="font-family:'AquaGrotesque', 'Aqua Grotesque';font-size:92.835px;fill:rgb(171,105,222);">s</text>
+        </g>
+        <g transform="matrix(2.39794,0,0,1.78638,-845.741,-254.302)">
+            <text x="610px" y="368.097px" style="font-family:'AquaGrotesque', 'Aqua Grotesque';font-size:26.307px;fill:rgb(255,152,54);">Question</text>
+        </g>
+        <g transform="matrix(1.01675,-0.0155085,-0.00993741,-0.651504,-7.27763,585.944)">
+            <path d="M622.226,344.597C718.602,344.597 809.733,340.597 905.554,340.597" style="fill:none;stroke-width:3.51px;stroke:rgb(177,86,255);"/>
+        </g>
+        <g transform="matrix(1.01675,-0.0155085,-0.00993741,-0.651504,-7.31738,653.944)">
+            <path d="M622.226,344.597C718.602,344.597 809.733,340.597 905.554,340.597" style="fill:none;stroke-width:3.51px;stroke:rgb(177,86,255);"/>
+        </g>
+    </g>
+</svg>

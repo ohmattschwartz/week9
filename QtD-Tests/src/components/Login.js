@@ -5,7 +5,7 @@ class Login extends Component {
   render () {
     return <div className='login-screen'>
       <header>
-        <img src='images/qtdlogo.svg' alt='Question the Day' />
+        <img src={require('../../images/qtdfullwlogo.png')} alt='Question the Day' />
       </header>
       <div className='login'>
         <ul>
@@ -17,14 +17,19 @@ class Login extends Component {
         <img src='images/applogo.svg' alt='applogo' />
       </div>
       <div className='about'>
-        <p>Using the power of the written word to connect everyday people. Every day.</p>
+        <p>Using the power of the written word to connect everyday people.</p>
+        <p>Every day.</p>
       </div>
       <footer>
-        <ul>
-          <li>Copyright &copy; 2016</li>
-          <li>Designed by Matt Schwartz for </li>
-          <li><img src={require('../../images/tiyLogo.png')} alt='tiyLogo' /></li>
-        </ul>
+        <div className='copyright-footer'>
+          <p>Copyright &copy; 2016</p>
+        </div>
+        <div className='designed-by-footer'>
+          <p>Designed by Matt Schwartz</p>
+        </div>
+        <div className='TIY-footer'>
+          <img src={require('../../images/tiyLogo.png')} alt='TIY Logo' />
+        </div>
       </footer>
       <video className='background' playsinline autoPlay muted loop>
         <source src={require('../../images/brettwriting.mp4')} type='video/mp4' />

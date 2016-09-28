@@ -5,6 +5,7 @@ $base-font-family: sans-serif
 $logo: #0045AA
 $appColor: #37384D
 $appFont: 'Oswald'
+$bluegrey: #8197b3
 
 html
   text-size-adjust: 100%
@@ -34,9 +35,12 @@ header
 
   img
     display: flex
-    max-height: 90%
-    max-width: 90%
-    padding-top: 10%
+    height: 25vw
+    width: 75vw
+    max-width: 900px
+    max-height: 230px
+    padding-top: 7%
+    padding-top: 4vmax
     margin-left: auto
     margin-right: auto
 
@@ -46,47 +50,58 @@ header
    list-style: none
    display: flex
    justify-content: space-around
-   padding-top: 12vh
+   padding-top: 10vh
+   padding-left: 2%
+   padding-right: 2%
 
   img
-    height: 76%
-    width: 76%
+    height: 7vw
+    width: 40vw
+    max-height: 70px
+
 
 .appLogo
 
   img
    height: 30%
    width: 30%
+   max-height: 200px
    display: flex
    margin-left: auto
    margin-right: auto
-   padding-top: 9vh
-   padding-bottom: 1.6vh
+   padding-top: 9vmin
+   padding-bottom: 5vh
 
 .about
   text-align: center
-  font-family: serif
-  font-size: 5.2vw
+  font-family: $appFont
+  font-size: 4vmin
+
   margin-left: 2.7%
   margin-right: 2.7%
-  padding-bottom: 19vh
-  color: $logo
+  text-shadow: 0.2vw 0.2vw 0.1vw $bluegrey
+  color: $appColor
+
+  p
+   margin-top: 2px
+   margin-bottom: 0px
 
 footer
-  padding-top: 0.5vh
-  padding-bottom: 0.5vh
-  font-size: 65%
-  color: white
+  font-size: 2vmin
+  font-family: $appFont
+  font-variant: small-caps
+  color: lightgrey
   background: $appColor
-
-  ul
-   list-style: none
-   margin-bottom: 0vh
-   display: flex
-   justify-content: space-around
+  margin-bottom: 0vh
+  display: flex
+  justify-content: space-around
 
   img
-    height: 4vw
+    height: 5vmin
+    margin-top: 1vmin
+
+.designed-by-footer
+  padding-right: 8vmin
 
 .login-screen footer
   position: fixed
@@ -94,17 +109,35 @@ footer
   left: 0
   right: 0
 
-header
-  position: fixed
-  top: 0
-  left: 0
-  right: 0
-  background-color: grey
-  padding-bottom: 4vh
+.home-screen
+
+  header
+    background-color: grey
+    margin-top: 0
+    padding-bottom: 2px
 
   img
-   height: 12vw
-   padding-top: 30px
+   height: 15vmin
+   width: 55vw
+   max-width: 900px
+   max-height: 230px
+   padding-top: 12px
+
+  footer
+    font-size: 2vmin
+    font-family: $appFont
+    font-variant: small-caps
+    color: lightgrey
+    background: $appColor
+    margin-bottom: 0vh
+    display: flex
+    justify-content: space-around
+
+    img
+      height: 5vmin
+      width: 6vmin
+      padding-top: 0
+      margin-top: 0.9vmax
 
 .options
   display: flex
@@ -139,11 +172,11 @@ header
     padding-top: 30px
     text-indent: 200%
     overflow: hidden
-    background: white url(http://i.imgur.com/vKRaKDX.png) center no-repeat
+    background: transparent url(http://i.imgur.com/vKRaKDX.png) center no-repeat
     border: transparent
-    background-size: 100%
+    background-size: 6.5vh
     width: 10vw
-    height: 10vh
+    height: 7vh
     outline: none
     transition: all 400ms ease
     &.expanded
@@ -153,38 +186,40 @@ header
   a
     display: flex
     background: $appColor
-    border-radius: 3px
+    border-radius: 2px
     text-align: left
-    padding: 2%
+    padding: 3%
     margin-left: 5px
     padding-left: 8%
-    border-top: 2px solid white
+    margin-top: 2.6%
     text-decoration: none
     color: white
     font-family: $appFont
     height: 1.3em
     transition: height 250ms ease
 
-  a:hover
-    background: #4b4d6b
-
 .nav-desktop
   display: flex
   margin-left: 2%
-  padding-top: 2vh
+  padding-top: 1vh
+  padding-bottom: 1vh
   a
    background: $appColor
    border-radius: 3px
    text-align: center
    text-indent: -5%
-   font-size: 2.5vw
+   font-size: 2.5vh
    margin-right: 10%
    padding-left: 4.7vw
    width: 25vw
    text-decoration: none
    color: white
    font-family: $appFont
-   height: 5.8vh
+   height: 5vh
+
+  a:hover
+   background: #41435f
+   transition: all 0.2s ease
 
 @media (max-width: 800px)
   .nav-mobile
@@ -192,16 +227,13 @@ header
   .nav-desktop
     display: none
 
-.search-container *,
-  box-sizing: border-box
-
 /* search bar container */
 .search-container
   display: table
   position: relative
   height: 10px
   margin-right: 10px
-  padding-top: 2vh
+  padding-top: 1vh
 
 
 /* search icon button */
@@ -210,17 +242,19 @@ header
   border: 1px solid $appColor
   border-radius: 0px 4px 4px 0px
   background-image: url('../../images/searchicon.png')
-  background-size: 4vh
+  background-size: 3.4vh
   background-repeat: no-repeat
   background-position: center
   display: table-cell
-  height: 6vh
+  height: 5vh
   position: relative
   text-align: center
   vertical-align: middle
   width: 10vw
   z-index: 2
 
+.search-icon-btn:hover
+   background: #41435f
 
 /* search bar input container */
 .search-input
@@ -233,7 +267,7 @@ header
 .search-input input.search-bar
   border: 1px solid $appColor
   border-radius: 4px
-  height: 5.95vh
+  height: 5.2vh
   padding: 0px
   width: 6vw
 
@@ -251,8 +285,160 @@ header
 
 /* hover on search bar container */
 .search-container:hover > .search-input input.search-bar
-  padding-left: 12%
+  padding-left: 10%
   font-family: $appFont
-  font-weight: bold
-  padding-right: 5%
+  font-size: 2.1vw
+  padding-right: 30%
   width: 40vw
+
+.todaysQuestion
+  background-color: $bluegrey
+  padding-bottom: 0.5vh
+  padding-left: 6.5vw
+  padding-right: 6.5vw
+
+  img
+    display: flex
+    height: 60%
+    width: 30%
+    max-width: 880px
+    max-height: 190px
+    padding-top: 0px
+    padding-bottom: 1vh
+    margin-left: auto
+    margin-right: auto
+
+  h1
+    font-size: 3.2vw
+    text-align: center
+    border-bottom: 0.3vh solid $logo
+    margin-top: 0px
+    font-family: $appFont
+    color: $appColor
+    background-color: grey
+
+.myResponse
+  display: flex
+  justify-content: space-around
+  padding-top: 4vh
+
+.myResponse-avatar
+
+  img
+    width: 20vw
+    height: 20vmin
+    max-width: 230px
+    max-height: 230px
+    padding-top: 0
+    margin-left: 2vw
+    border-radius: 15px
+
+/* qtd answer box */
+.answer-container
+ display: flex
+ justify-content: center
+ margin-right: 2vw
+
+textarea
+ outline: none
+ background: #efefef
+ height: 12.5vmin
+ width: 61vw
+ border: 0
+ padding: 1%
+ resize: none
+ font-family: $appFont
+ font-size: 2vw
+ border-radius: 3px
+
+.nav-answer
+
+  button
+   font-family: $appFont
+   margin: 2% 0% 0% 0%
+   border: 0
+   color: white
+   font-size: 1.4vw
+   background: $appColor
+   padding: 0.6vh 1vw 0.6vh 1vw
+   transition: all .2s ease
+   border-radius: 3px
+
+  button:hover
+   background: #41435f
+
+.user-responses-header
+  display: flex
+  justify-content: space-between
+  margin-top: 7vmin
+  padding-bottom: 0.5vmin
+  background-color: lightgrey
+
+  img
+    height: 8vmin
+    width: 20vmin
+    margin-left: 5%
+    margin-top: 0
+    padding-top: 0
+
+/* SORT ANSWERS */
+.nav
+  margin-top: 3vmin
+  margin-bottom: 0
+  font-size: 2vmin
+  font-family: $appFont
+
+.nav-tabs > li > a
+  padding: 3vmin 3.98vmin 2.7vmin 3.98vmin
+  color: $logo
+  border-left: 1px solid darkgrey
+  transition: all 0.5s ease
+  &:hover
+    background-color: $appColor !important
+    border: none
+    color: white
+
+.nav-tabs>li.active>a,
+.nav-tabs>li.active>a:focus
+  color: white
+  background-color: $appColor
+  &:hover
+    color: white
+
+.nav-tabs > li,
+.nav-pills > li
+  float: none
+  display: inline-block
+
+.response-lists
+  padding-top: 4vh
+  padding-left: 3.5vmin
+  padding-bottom: 4vh
+  border-bottom: 1px solid lightgrey
+
+  img
+    padding-top: 0
+    width: 9vmin
+    height: 9vmin
+    border-radius: 9px
+
+.my-friend
+  display: flex
+  justify-content: space-around
+
+.friend-response
+  margin-right: 25vmax
+  margin-left: 4vmax
+
+.friend-response-name
+  font-size: 2.5vmin
+  font-variant: small-caps
+  font-family: $appFont
+  margin-top: 0
+  margin-bottom: 0.8vmin
+
+.friend-response-answer
+  font-size: 2vmin
+  font-family: serif
+  margin: 0
+  margin-right: -25vmin

@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import '../styles/screen.sass'
 import Answer from './Answer'
+import Navigation from './Navigation'
+import { Link, browserHistory } from 'react-router'
 
 class Home extends Component {
 
   static propTypes = {
+    todaysQuestion: React.PropTypes.object,
+    location: React.PropTypes.object,
+    submitAnswer: React.PropTypes.func,
+    answersForQuestion: React.PropTypes.func
   }
 
   handleSubmit = (event) => {
@@ -13,41 +19,39 @@ class Home extends Component {
   }
 
   get answers () {
-    let question = this.props.todaysQuestion;
-    let answers = this.props.answersFromFriendsForQuestion(question)
+    let question = this.props.todaysQuestion
+    let answers = this.props.answersForQuestion(question)
+    let filtered
+    switch (this.props.location.pathname) {
+      case '/stars':
+        filtered = []
+        break
+      case '/picks':
+        filtered = answers.filter((answer) => {
+          return answer.staff_pick
+        })
+        break
+      case '/friends':
+        filtered = []
+        break
+      default:
+        filtered = answers
+    }
 
-    return answers.reverse().map((answer) => <Answer answer={answer} />)
+    return filtered.reverse().map((answer, i) => <Answer answer={answer} key={i} />)
+  }
+
+  logout = (event) => {
+    event.preventDefault()
+    this.props.auth.logout()
+    browserHistory.push('/')
   }
 
   render () {
     return <div className='home-screen'>
       <header>
         <img src={require('../../images/qtdfullwlogo.png')} alt='QuestionOftheDay' />
-        <div className='options'>
-          <div className='menu'>
-            <nav className='nav-desktop'>
-              <a href='#'>Home</a>
-              <a href='#'>My Profile</a>
-              <a href='#'>About Us</a>
-            </nav>
-            <nav className='nav-mobile'>
-              <button id='nav-toggle'>Toggle</button>
-              <div className='nav-menu nav-hidden'>
-                <a href='#'>Home</a>
-                <a href='#'>My Profile</a>
-                <a href='#'>About Us</a>
-              </div>
-            </nav>
-          </div>
-          <div className='search-container'>
-            <div className='search-icon-btn'>
-              <i className='fa fa-search' />
-            </div>
-            <div className='search-input'>
-              <input type='search' className='search-bar' placeholder='Search Users...' />
-            </div>
-          </div>
-        </div>
+        <Navigation auth={this.props.auth} />
       </header>
       <div className='todaysQuestion'>
         <img src={require('../../images/todaysQuestion.png')} alt='todaysQuestion' />
@@ -75,10 +79,10 @@ class Home extends Component {
       <div className='user-responses'>
         <div className='user-responses-header'>
           <img src={require('../../images/todaysAnswers.png')} />
-          <ul className='nav nav-tabs' role='tablist'>
-            <li role='presentation' className='active'><a href='#friends' aria-controls='home' role='tab' data-toggle='tab'>My Friends</a></li>
-            <li role='presentation'><a href='#stars' aria-controls='profile' role='tab' data-toggle='tab'>Most Stars</a></li>
-            <li role='presentation'><a href='#staffpicks' aria-controls='messages' role='tab' data-toggle='tab'>Staff Picks</a></li>
+          <ul className='nav nav-tabs'>
+            <li><Link to='/'>All</Link></li>
+            <li><Link to='/friends' activeClassName='active'>My Friends</Link></li>
+            <li><Link to='/picks' activeClassName='active'>Staff Picks</Link></li>
           </ul>
         </div>
         {this.answers}

@@ -1,6 +1,12 @@
-import React, { Component } from 'react'
+import React, { Component, PropTypes as T } from 'react'
+import { browserHistory } from 'react-router'
+import AuthService from '../utils/AuthService'
 
 class Login extends Component {
+
+  static propTypes = {
+    auth: T.instanceOf(AuthService)
+  }
 
   render () {
     return <div className='login-screen'>
@@ -8,13 +14,12 @@ class Login extends Component {
         <img src={require('../../images/qtdfullwlogo.png')} alt='Question the Day' />
       </header>
       <div className='login'>
-        <ul>
-          <li><img src='images/loginfacebook.svg' alt='Facebook' /></li>
-          <li><img src='images/logintwitter.svg' alt='Twitter' /></li>
-        </ul>
+        <button onClick={this.props.auth.login}>
+          Login or Signup
+        </button>
       </div>
       <div className='appLogo'>
-        <img src='images/applogo.svg' alt='applogo' />
+        <img src={require('../../images/applogo.svg')} alt='applogo' />
       </div>
       <div className='about'>
         <p>Using the power of the written word to connect everyday people.</p>
@@ -31,7 +36,7 @@ class Login extends Component {
           <img src={require('../../images/tiyLogo.png')} alt='TIY Logo' />
         </div>
       </footer>
-      <video className='background' playsinline autoPlay muted loop>
+      <video className='background' playsInline autoPlay muted loop>
         <source src={require('../../images/brettwriting.mp4')} type='video/mp4' />
       </video>
     </div>

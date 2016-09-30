@@ -40,15 +40,14 @@ class App extends Component {
     this.reloadAnswers()
   }
 
-  answersFromFriendsForQuestion = (question) => {
+  answersForQuestion = (question) => {
     return this.state.answers.filter((answer) => {
-      // also will compare to friends
       return answer.question_id === question.id
     })
   }
 
   get todaysQuestion () {
-    let question = this.state.questions.find((question) => question.day_posted === '2016-09-27')
+    let question = this.state.questions.find((question) => question.day_posted === '2016-09-28')
 
     if (question) {
       return question
@@ -59,28 +58,32 @@ class App extends Component {
   }
 
   submitAnswer = (text) => {
-    let question = this.todaysQuestion
+    const { auth } = this.props.route
+    if (auth.loggedIn()) {
+      let question = this.todaysQuestion
 
-    window.fetch(`${Api.url}/answers`, {
-      method: 'POST',
-      headers: { 'Authorization': Api.bearer_token, 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        text: text,
-        question_id: question.id,
-        user_id: 42,
-        staff_pick: false,
-        star_count: 0
-      })
-    }).then(() => this.reloadAnswers())
+      window.fetch(`${Api.url}/answers`, {
+        method: 'POST',
+        headers: { 'Authorization': Api.bearer_token, 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          text: text,
+          question_id: question.id,
+          user_id: auth.getToken()
+        })
+      }).then(() => this.reloadAnswers())
+    }
   }
 
   render () {
-    return React.cloneElement(this.props.children,
-      {
-        todaysQuestion: this.todaysQuestion,
-        submitAnswer: this.submitAnswer,
-        answersFromFriendsForQuestion: this.answersFromFriendsForQuestion
-      })
+    return <div className='app-container'>
+      {React.cloneElement(this.props.children,
+        {
+          auth: this.props.route.auth,
+          todaysQuestion: this.todaysQuestion,
+          submitAnswer: this.submitAnswer,
+          answersForQuestion: this.answersForQuestion
+        })}
+    </div>
   }
 }
 
